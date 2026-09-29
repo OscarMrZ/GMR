@@ -143,7 +143,8 @@ def read_bvh(filename, start=None, end=None, order=None):
             fi = i - start if start else i
             if channels == 3:
                 positions[fi, 0:1] = data_block[0:3]
-                rotations[fi, :] = data_block[3:].reshape(N, 3)
+                rot_data = data_block[-N*3:]
+                rotations[fi, :] = rot_data.reshape(N, 3)
             elif channels == 6:
                 data_block = data_block.reshape(N, 6)
                 positions[fi, :] = data_block[:, 0:3]

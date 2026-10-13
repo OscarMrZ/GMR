@@ -87,8 +87,8 @@ ROBOT_CHOICES = [
     "booster_t1", "booster_t1_29dof", "stanford_toddy", "fourier_n1",
     "engineai_pm01", "kuavo_s45", "hightorque_hi", "galaxea_r1pro",
     "berkeley_humanoid_lite", "booster_k1", "pnd_adam_lite", "openloong",
-    "tienkung", "fourier_gr3", "pal_kangaroo", "pal_kangaroo_lower_body",
-    "pal_kangaroo_lower_body_new_ankle", "pal_kangaroo_hands",
+    "tienkung", "fourier_gr3", "pal_kangaroo", "pal_kangaroo_7dof",
+    "pal_kangaroo_lower_body", "pal_kangaroo_lower_body_new_ankle", "pal_kangaroo_hands",
 ]
 
 # VERIFY (see point 1 above): the IK_CONFIG_DICT key used for the

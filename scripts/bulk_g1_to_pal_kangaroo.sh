@@ -23,7 +23,7 @@ for path in "$src_dir"/*; do
         uv run "$parent_dir/scripts/robot_to_robot.py" \
             --source_robot_file "$path" \
             --source-robot unitree_g1 \
-            --target-robot pal_kangaroo \
+            --target-robot pal_kangaroo_7dof \
             --save_path "$out_dir/$file"
     fi
 done

@@ -113,10 +113,10 @@ class GeneralMotionRetargeting:
             "tendon": mj.mjtEq.mjEQ_TENDON,
             "distance": mj.mjtEq.mjEQ_DISTANCE,
         }
-        want = {type_map[t.lower()] for t in types if t.lower() in type_map}
+        want = {int(type_map[t.lower()]) for t in types if t.lower() in type_map}
         out = []
         for i in range(self.model.neq):
-            if self.model.eq_type[i] not in want:
+            if int(self.model.eq_type[i]) not in want:
                 continue
             name = mj.mj_id2name(self.model, mj.mjtObj.mjOBJ_EQUALITY, i)
             if not name and include_unnamed:

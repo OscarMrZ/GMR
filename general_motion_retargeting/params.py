@@ -31,6 +31,14 @@ ROBOT_XML_DICT = {
 }
 
 IK_CONFIG_DICT = {
+    # robot-to-robot sources (scripts/robot_to_robot.py): keyed by the SOURCE robot, configs in the
+    # canonical "smplx" body vocabulary but tuned for keypoints computed from that robot's motion
+    "unitree_g1": {
+        "pal_kangaroo_7dof": IK_CONFIG_ROOT / "g1_to_kangaroo_7dof.json",
+    },
+    "unitree_g1_with_hands": {
+        "pal_kangaroo_7dof": IK_CONFIG_ROOT / "g1_to_kangaroo_7dof.json",
+    },
     # offline data
     "smplx":{
         "unitree_g1": IK_CONFIG_ROOT / "smplx_to_g1.json",

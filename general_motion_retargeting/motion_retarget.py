@@ -101,8 +101,10 @@ class GeneralMotionRetargeting:
             self.ik_limits.append(mink.VelocityLimit(self.model, VELOCITY_LIMITS)) 
             
         self.setup_retarget_configuration()
-        
-        self.ground_offset = 0.0
+
+        # uniform world-z shift of every target (see apply_ground_offset); unlike ground_height, which is
+        # applied in each body's rotated frame, this moves the whole robot vertically
+        self.ground_offset = ik_config.get("ground_offset", 0.0)
 
     def _equality_names(self, types=("connect", "weld"), include_unnamed=True):
         """Return names of equalities matching types; synthesize names if missing."""

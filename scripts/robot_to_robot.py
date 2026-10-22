@@ -99,6 +99,18 @@ ROBOT_CHOICES = [
 CANONICAL_NAMESPACE = "smplx"
 
 
+def target_config_namespace(source_robot, target_robot):
+    """
+    IK_CONFIG_DICT namespace of the TARGET config. A source robot can have its
+    own configs (IK_CONFIG_DICT[source_robot][target_robot], same canonical
+    body names, tuned for keypoints computed from that robot, e.g.
+    g1_to_kangaroo_7dof.json); otherwise the canonical SMPL-X config is used.
+    """
+    if target_robot in IK_CONFIG_DICT.get(source_robot, {}):
+        return source_robot
+    return CANONICAL_NAMESPACE
+
+
 def load_robot_motion_file(path):
     """
     Load a saved SOURCE robot motion .pkl.
@@ -197,14 +209,14 @@ def get_source_body_mapping(source_robot):
     return body_mapping
 
 
-def warn_on_missing_coverage(body_mapping, target_robot):
+def warn_on_missing_coverage(body_mapping, target_robot, namespace=CANONICAL_NAMESPACE):
     """
     Preflight check: does the source robot's mapping cover every
     canonical body the TARGET config actually needs? If not, GMR.retarget
     will KeyError partway through the first frame -- better to fail loud
     and early with a readable message.
     """
-    tgt_cfg = _load_ik_config(CANONICAL_NAMESPACE, target_robot)
+    tgt_cfg = _load_ik_config(namespace, target_robot)
     needed = set()
     for table_name in ("ik_match_table1", "ik_match_table2"):
         for _frame_name, entry in tgt_cfg.get(table_name, {}).items():
@@ -346,7 +358,8 @@ if __name__ == "__main__":
     dof_pos_all = source_motion["dof_pos"][args.start_frame:args.end_frame]
 
     body_mapping = get_source_body_mapping(args.source_robot)
-    warn_on_missing_coverage(body_mapping, args.target_robot)
+    target_ns = target_config_namespace(args.source_robot, args.target_robot)
+    warn_on_missing_coverage(body_mapping, args.target_robot, target_ns)
     src_model, src_data = build_mj_model_and_data(args.source_robot)
 
     canonical_frames = []
@@ -365,14 +378,13 @@ if __name__ == "__main__":
     # a robot skeleton already at the right scale, so this is set to None
     # (ratio stays 1.0, no rescaling applied).
     #
-    # src_human is CANONICAL_NAMESPACE ("smplx"), NOT args.source_robot --
-    # it only selects which IK config to load (paired with tgt_robot), and
-    # that config's body_name vocabulary is exactly what our canonical
-    # dict above already uses as keys. Passing the robot name here would
-    # make GMR look for a config that doesn't exist.
+    # src_human only selects which IK config to load (paired with tgt_robot):
+    # the source robot's own config when it has one (target_config_namespace),
+    # else CANONICAL_NAMESPACE ("smplx"). Both use the canonical body_name
+    # vocabulary our dict above already uses as keys.
     retarget = GMR(
         actual_human_height=None,
-        src_human=CANONICAL_NAMESPACE,
+        src_human=target_ns,
         tgt_robot=args.target_robot,
     )
 

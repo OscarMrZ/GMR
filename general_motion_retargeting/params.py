@@ -35,6 +35,7 @@ IK_CONFIG_DICT = {
     # canonical "smplx" body vocabulary but tuned for keypoints computed from that robot's motion
     "unitree_g1": {
         "pal_kangaroo_7dof": IK_CONFIG_ROOT / "g1_to_kangaroo_7dof.json",
+        "pal_kangaroo_hands": IK_CONFIG_ROOT / "g1_to_kangaroo_hands.json",
     },
     "unitree_g1_with_hands": {
         "pal_kangaroo_7dof": IK_CONFIG_ROOT / "g1_to_kangaroo_7dof.json",

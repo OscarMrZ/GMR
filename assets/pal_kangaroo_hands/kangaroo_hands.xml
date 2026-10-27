@@ -450,6 +450,10 @@
     <exclude body1="leg_right_5_link" body2="leg_right_femur_link" />
     <exclude body1="leg_right_5_link" body2="leg_right_knee_link" />
     <exclude body1="leg_right_femur_link" body2="leg_right_knee_link" />
+    <exclude body1="arm_left_5_link" body2="hand_left_palm_link" />
+    <exclude body1="arm_right_5_link" body2="hand_right_palm_link" />
+    <exclude body1="arm_left_4_link" body2="hand_left_palm_link" />
+    <exclude body1="arm_right_4_link" body2="hand_right_palm_link" />
   </contact>
   <equality>
     <connect name="leg_left_closed_kin_joint" body1="leg_left_4_link" body2="leg_left_knee_link" anchor="0 0 0" solref="0.002" />

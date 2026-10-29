@@ -103,7 +103,7 @@
                   <geom class="visual" material="light_gray" mesh="arm_4_link" />
                   <body name="arm_left_5_link" pos="-0.17011 0.02 -0.03711" quat="0.707105 0 -0.707108 0">
                     <inertial pos="0.00582226 -0.000330137 0.0702339" quat="0.965441 -0.00213396 -0.0211456 0.259754" mass="0.73786" diaginertia="0.00302019 0.00300619 0.000658945" />
-                    <joint name="arm_left_5_joint" axis="0 0 1" range="-3.66519 1.5708" />
+                    <joint name="arm_left_5_joint" axis="0 0 1" range="-1.5708 1.5708" />
                     <geom class="visual" mesh="arm5_tip_link" material="light_gray" />
                     <geom pos="0 0 0.0303" quat="-0.707107 0 0 0.707106" class="visual" mesh="seedRobotics_adaptor" material="light_gray" />
                     <geom pos="0 0 0.0498" quat="-0.000398673 0 0 1" class="visual" mesh="forearm_link" material="light_gray" />
@@ -227,13 +227,13 @@
                   <geom class="visual" material="light_gray" mesh="arm_4_link" />
                   <body name="arm_right_5_link" pos="-0.17011 0.02 -0.03711" quat="0.707105 0 -0.707108 0">
                     <inertial pos="0.00582226 -0.000330137 0.0702339" quat="0.965441 -0.00213396 -0.0211456 0.259754" mass="0.73786" diaginertia="0.00302019 0.00300619 0.000658945" />
-                    <joint name="arm_right_5_joint" axis="0 0 1" range="-1.5708 3.66519" />
+                    <joint name="arm_right_5_joint" axis="0 0 1" range="-1.5708 1.5708" />
                     <geom class="visual" mesh="arm5_tip_link" material="light_gray" />
                     <geom pos="0 0 0.0303" quat="-0.707107 0 0 0.707106" class="visual" mesh="seedRobotics_adaptor" material="light_gray" />
                     <geom pos="0 0 0.0498" quat="-1 0 0 0.000397654" class="visual" mesh="forearm_link" material="light_gray" />
                     <body name="hand_right_palm_base_link" pos="0 0 0.2158" quat="0.000280246 -0.707105 0.000280245 0.707108">
                       <inertial pos="0.00858508 -2.4614e-09 0.000249999" quat="0.5 0.5 -0.5 0.5" mass="0.0509809" diaginertia="1.88432e-05 1.37535e-05 9.79678e-06" />
-                      <joint name="hand_right_palm_roll_joint" axis="0 0 -1" range="-0.785398 0.785398" />
+                      <joint name="hand_right_palm_roll_joint" axis="0 0 1" range="-0.785398 0.785398" />
                       <geom class="visual" mesh="wrist_link" material="light_gray" />
                       <body name="hand_right_palm_link" quat="0.707105 -0.707108 0 0">
                         <body name="hand_right_center_link" pos="-0.0776 -0.0058 0.0247" />
@@ -466,14 +466,14 @@
     <general name="arm_left_2_actuator_position" joint="arm_left_2_joint" group="2" ctrllimited="true" ctrlrange="-1.1345 2.4435" biastype="affine" gainprm="100" biasprm="0 -100" />
     <general name="arm_left_3_actuator_position" joint="arm_left_3_joint" group="2" ctrllimited="true" ctrlrange="-2.618 2.618" biastype="affine" gainprm="100" biasprm="0 -100" />
     <general name="arm_left_4_actuator_position" joint="arm_left_4_joint" group="2" ctrllimited="true" ctrlrange="-1.1345 2.4435" biastype="affine" gainprm="100" biasprm="0 -100" />
-    <general name="arm_left_5_actuator_position" joint="arm_left_5_joint" group="2" ctrllimited="true" ctrlrange="-3.66519 1.5708" biastype="affine" gainprm="100" biasprm="0 -100" />
+    <general name="arm_left_5_actuator_position" joint="arm_left_5_joint" group="2" ctrllimited="true" ctrlrange="-1.5708 1.5708" biastype="affine" gainprm="100" biasprm="0 -100" />
     <general name="hand_left_palm_roll_actuator_position" joint="hand_left_palm_roll_joint" group="2" ctrllimited="true" ctrlrange="-0.785398 0.785398" biastype="affine" gainprm="100" biasprm="0 -100" />
     <general name="hand_left_palm_pitch_actuator_position" joint="hand_left_palm_pitch_joint" group="2" ctrllimited="true" ctrlrange="-0.785398 0.785398" biastype="affine" gainprm="100" biasprm="0 -100" />
     <general name="arm_right_1_actuator_position" joint="arm_right_1_joint" group="2" ctrllimited="true" ctrlrange="-2.618 2.618" biastype="affine" gainprm="100" biasprm="0 -100" />
     <general name="arm_right_2_actuator_position" joint="arm_right_2_joint" group="2" ctrllimited="true" ctrlrange="-1.1345 2.4435" biastype="affine" gainprm="100" biasprm="0 -100" />
     <general name="arm_right_3_actuator_position" joint="arm_right_3_joint" group="2" ctrllimited="true" ctrlrange="-2.618 2.618" biastype="affine" gainprm="100" biasprm="0 -100" />
     <general name="arm_right_4_actuator_position" joint="arm_right_4_joint" group="2" ctrllimited="true" ctrlrange="-1.1345 2.4435" biastype="affine" gainprm="100" biasprm="0 -100" />
-    <general name="arm_right_5_actuator_position" joint="arm_right_5_joint" group="2" ctrllimited="true" ctrlrange="-1.5708 3.66519" biastype="affine" gainprm="100" biasprm="0 -100" />
+    <general name="arm_right_5_actuator_position" joint="arm_right_5_joint" group="2" ctrllimited="true" ctrlrange="-1.5708 1.5708" biastype="affine" gainprm="100" biasprm="0 -100" />
     <general name="hand_right_palm_roll_actuator_position" joint="hand_right_palm_roll_joint" group="2" ctrllimited="true" ctrlrange="-0.785398 0.785398" biastype="affine" gainprm="100" biasprm="0 -100" />
     <general name="hand_right_palm_pitch_actuator_position" joint="hand_right_palm_pitch_joint" group="2" ctrllimited="true" ctrlrange="-0.785398 0.785398" biastype="affine" gainprm="100" biasprm="0 -100" />
     <general name="leg_left_1_actuator_position" joint="leg_left_1_joint" group="2" ctrllimited="true" ctrlrange="-0.261799 0.698132" biastype="affine" gainprm="500" biasprm="0 -500" />
